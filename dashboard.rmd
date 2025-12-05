@@ -1,19 +1,31 @@
 ---
-title: "Dow Jones Gold Ratio"
-output: flexdashboard::flex_dashboard
+title: "Focal Chart (Top)"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
 ---
-            
-<style>
-.navbar {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: block;
-  position: fixed;
-  width: 200px; /* Modify the width of the sidebar */
-}
-body {
-          margin-left: 200px; /* Add a left margin to avoid content overlay */
-padding-top:0px
-}
-</style>
+    
+Row {data-height=350}
+-------------------------------------
+
+### Chart 1
+
+```{r}
+```
+
+Row {data-height=650}
+-------------------------------------
+   
+### Chart 2
+
+```{r}
+library(flexdashboard)
+
+valueBox(42, caption = "Dow to Gold Ratio", icon="ion-speedometer")
+```   
+    
+### Chart 3
+
+```{r}
+```
+
