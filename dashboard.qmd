@@ -1,8 +1,6 @@
 ---
-title: "Focal Chart (Top)"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: rows
+title: "dowjonesratio"
+output: html
 ---
 
     
