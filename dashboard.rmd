@@ -13,6 +13,7 @@ Row {data-height=650}
 
 ```{r}
 library(ggplot2)
+library(rvest)
 ggplot(
   data = mtcars,
   mapping = aes(x = mpg, y = cyl)
@@ -22,17 +23,33 @@ ggplot(
 
 Row {data-height=350}
 -------------------------------------
+
+```{r, echo=FALSE}
+    dia_url <- read_html('https://finance.yahoo.com/quote/DIA/')
+    gold_url <- read_html('https://finance.yahoo.com/quote/GC=F/')
+    
+    gold_scraped <- gold_url %>% html_elements(xpath = "//*[@id=\"main-content-wrapper\"]/section[1]/div[2]/div[1]/section/div/section/div[1]/div[1]/span") %>%  html_text2()
+    dia_scraped <- dia_url %>% html_elements(xpath =   "//*[@id=\"main-content-wrapper\"]/section[1]/div[2]/div[1]/section/div/section/div[1]/div[1]/span") %>%  html_text2()
+
+```  
+
    
 ### Chart 2
 
 ```{r}
 library(flexdashboard)
-valueBox(42, caption = "Dow to Gold Ratio", icon="ion-speedometer")
+valueBox(ratio, caption = "Dow to Gold Ratio", icon="ion-speedometer")
 ```   
     
 ### Chart 3
 
 ```{r}
-valueBox(42, caption = "change over last 6 months", icon="ion-android-options")
+valueBox(gold_scraped, caption = "Price of gold per ounce $USD", icon="ion-android-options")
+```
+
+### Chart 3
+
+```{r}
+valueBox(dia_scraped, caption = "Dow Jones per share", icon="ion-android-options")
 ```
 
